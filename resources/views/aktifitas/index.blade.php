@@ -3,11 +3,11 @@
 <div class="page-wrapper">
     <div class="page-content">
         <!--breadcrumb-->
-        <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+        <div class="mb-3 page-breadcrumb d-none d-sm-flex align-items-center">
             <div class="breadcrumb-title pe-3">Aktifitas</div>
             <div class="ps-3">
                 <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb mb-0 p-0">
+                    <ol class="p-0 mb-0 breadcrumb">
                         <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                         </li>
                         <li class="breadcrumb-item active" aria-current="page">Data Aktifitas</li>
@@ -18,10 +18,13 @@
         <!--end breadcrumb-->
         <div class="row">
             <div class="col-md-12">
-                <div class="mb-3 mt-4 d-flex justify-content-start">
-                    <a href="{{ route('aktifitas.create') }}"><button class="btn btn-primary px-5 radius-30 me-3"><i class="bx bx-plus-circle me-1"></i>Add Data</button></a>
+                <div class="mt-4 mb-3 d-flex justify-content-start">
+                    @if(auth()->user()->id != 1 && auth()->user()->id != 2)
+                    <a href="{{ route('aktifitas.create') }}"><button class="px-5 btn btn-primary radius-30 me-3"><i class="bx bx-plus-circle me-1"></i>Add Data</button></a>
+                    @endif
+                    
                     @if(auth()->user()->id == 1 || auth()->user()->id == 2)
-                    <a href="{{ route('cetak.lkh') }}"><button class="btn btn-success px-5 radius-30"><i class="bx bx-printer me-1"></i>Cetak LKH</button></a>
+                    <a href="{{ route('cetak.lkh') }}"><button class="px-5 btn btn-success radius-30"><i class="bx bx-printer me-1"></i>Cetak LKH</button></a>
                     @endif
                 </div>
             </div>
