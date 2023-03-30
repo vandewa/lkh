@@ -32,8 +32,16 @@
         <label class="form-label">OPD</label>
         {{Form::select('opd_tp' ,get_code_group('OPD_TP'), null, ['class' => 'form-control ','placeholder' => '- Pilih -', 'required'])}}
     </div>
+    <div class="col-md-6">
+        <label class="form-label">Atasan</label>
+        {{Form::select('atasan_id' ,$atasan, null, ['class' => 'form-control ','placeholder' => '- Pilih -', 'required'])}}
+    </div>
 @else
     <input type="hidden" name="opd_tp" value="{{ auth()->user()->opd_tp }}">
+    <div class="col-md-6">
+        <label class="form-label">Atasan</label>
+        {{Form::select('atasan_id' ,$atasan, null, ['class' => 'form-control ','placeholder' => '- Pilih -', 'required', 'readonly' => true])}}
+    </div>
 @endif
 
 <div class="col-12">

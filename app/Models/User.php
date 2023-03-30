@@ -33,6 +33,7 @@ class User extends Authenticatable
         'opd_tp',
         'tanggal_lahir',
         'tempat_lahir_tp',
+        'atasan_id',
     ];
 
     /**
@@ -71,5 +72,9 @@ class User extends Authenticatable
 
     public function jabatan(){
         return $this->belongsTo(ComCode::class, 'jabatan_tp');
+    }
+
+    public function atasannya(){
+        return $this->belongsTo(Atasan::class, 'atasan_id');
     }
 }

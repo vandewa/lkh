@@ -218,9 +218,10 @@ class AktifitasController extends Controller
 
         // return $data;
 
-        $nama = User::with(['jabatan', 'nama_opd'])
+        $nama = User::with(['jabatan', 'nama_opd', 'atasannya'])
                 ->where('id', $request->user_id)
                 ->first();
+
 
         $bulan = $request->bulan;
         $bulan_tahun = ($request->tahun.'-'.$request->bulan);
@@ -233,6 +234,10 @@ class AktifitasController extends Controller
             'opd' => $nama->nama_opd->code_nm??'',
             'jabatan' => $nama->jabatan->code_nm??'',
             'bulan' => strtoupper(Carbon::createFromFormat('Y-m', $bulan_tahun)->isoFormat('MMMM Y')),
+            'tanggal_pengesahan' => strtoupper(Carbon::createFromFormat('Y-m-d', $request->tanggal)->isoFormat('D MMMM Y')),
+            'nama_atasan' => $nama->atasannya->nama??'',
+            'nip' => $nama->atasannya->nip??'',
+
         ]);
         $kampret= [];
         $keterangan = '';

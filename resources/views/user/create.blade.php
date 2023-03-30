@@ -3,11 +3,11 @@
 <div class="page-wrapper">
     <div class="page-content">
         <!--breadcrumb-->
-        <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+        <div class="mb-3 page-breadcrumb d-none d-sm-flex align-items-center">
             <div class="breadcrumb-title pe-3">User</div>
             <div class="ps-3">
                 <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb mb-0 p-0">
+                    <ol class="p-0 mb-0 breadcrumb">
                         <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                         </li>
                         <li class="breadcrumb-item active" aria-current="page">Data User</li>
@@ -17,12 +17,12 @@
         </div>
         <!--end breadcrumb-->
         <div class="row">
-            <div class="col-xl-7 mx-auto">
+            <div class="mx-auto col-xl-7">
                 <hr/>
-                <div class="card border-top border-0 border-4 border-white">
-                    <div class="card-body p-5">
+                <div class="border-0 border-4 border-white card border-top">
+                    <div class="p-5 card-body">
                         <div class="card-title d-flex align-items-center">
-                            <div><i class="bx bx-user me-1 font-22 text-white"></i>
+                            <div><i class="text-white bx bx-user me-1 font-22"></i>
                             </div>
                             <h5 class="mb-0 text-white">User</h5>
                         </div>

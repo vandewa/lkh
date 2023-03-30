@@ -4,13 +4,13 @@
     <div class="page-content">
         <!--breadcrumb-->
         <div class="mb-3 page-breadcrumb d-none d-sm-flex align-items-center">
-            <div class="breadcrumb-title pe-3">User</div>
+            <div class="breadcrumb-title pe-3">Atasan</div>
             <div class="ps-3">
                 <nav aria-label="breadcrumb">
                     <ol class="p-0 mb-0 breadcrumb">
                         <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                         </li>
-                        <li class="breadcrumb-item active" aria-current="page">Data User</li>
+                        <li class="breadcrumb-item active" aria-current="page">Data Atasan</li>
                     </ol>
                 </nav>
             </div>
@@ -22,13 +22,13 @@
                 <div class="border-0 border-4 border-white card border-top">
                     <div class="p-5 card-body">
                         <div class="card-title d-flex align-items-center">
-                            <div><i class="text-white bx bx-user me-1 font-22"></i>
+                            <div><i class="text-white bx bx-list-plus me-1 font-22"></i>
                             </div>
-                            <h5 class="mb-0 text-white">User</h5>
+                            <h5 class="mb-0 text-white">Atasan</h5>
                         </div>
                         <hr>
-                         {{Form::model($data, ['route' => ['user.update', $data->id],'method' => 'put','class' => 'row g-3 mt-2', 'files' => true])}}
-                        @include('user.form')
+                         {{Form::model($data, ['route' => ['atasan.update', $data->id],'method' => 'put','class' => 'row g-3 mt-2', 'files' => true])}}
+                        @include('atasan.form')
                         {{Form::close()}}
                     </div>
                 </div>
@@ -45,5 +45,5 @@
 <!-- Laravel Javascript Validation -->
 <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
 
-{!! JsValidator::formRequest('App\Http\Requests\UserStoreValidation') !!}
+{!! JsValidator::formRequest('App\Http\Requests\AtasanStoreValidation') !!}
 @endpush

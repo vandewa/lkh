@@ -41,6 +41,13 @@
                 <div class="menu-title">User</div>
             </a>
         </li>
+        <li class="{{ Request::segment(1) == 'atasan' ? 'mm-active' : '' }}">
+            <a href="{{ route('atasan.index') }}">
+                <div class="parent-icon"><i class='bx bx-user-circle'></i>
+                </div>
+                <div class="menu-title">Atasan</div>
+            </a>
+        </li>
         @endif
 
     </ul>

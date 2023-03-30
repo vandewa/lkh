@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AktifitasController;
 use App\Http\Controllers\TanggalLiburController;
+use App\Http\Controllers\AtasanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,4 +39,5 @@ Route::middleware([
     Route::post('/aktifitas/cetak', [AktifitasController::class, 'storeCetakLKH'])->name('store.cetak.lkh');
     Route::resource('aktifitas', AktifitasController::class);
     Route::resource('tanggal-libur', TanggalLiburController::class);
+    Route::resource('atasan', AtasanController::class);
 });

@@ -3,10 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
-
-class UserStoreValidation extends FormRequest
+class AtasanStoreValidation extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,12 +22,9 @@ class UserStoreValidation extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required',
-            'password' => 'confirmed',     
-            'atasan_id' => 'required',
-            'email' => ['required', 'email',
-                Rule::unique('users')->ignore($this->user),
-            ],
+            'nama' => 'required',
+            'nip' => 'required|max:18',
+            'jabatan' => 'required',
         ];
     }
 }

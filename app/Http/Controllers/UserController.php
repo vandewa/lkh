@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use Yajra\DataTables\Facades\DataTables;
 use App\Http\Requests\UserStoreValidation;
+use App\Models\Atasan;
 
 class UserController extends Controller
 {
@@ -27,8 +28,8 @@ class UserController extends Controller
                 ->addColumn('action', function($row){
                     $actionBtn =
                     '<div>
-                        <a href="'.route('user.edit', $row->id ).'" class="btn btn-info px-3 radius-30"><i class="bx bx-edit-alt mr-1"></i>Edit</a>
-                        <a href="'.route('user.destroy', $row->id ).'" class="btn btn-danger px-3 radius-30 delete-data-table"><i class="bx bx-trash-alt mr-1"></i>Delete</a>
+                        <a href="'.route('user.edit', $row->id ).'" class="px-3 btn btn-info radius-30"><i class="mr-1 bx bx-edit-alt"></i>Edit</a>
+                        <a href="'.route('user.destroy', $row->id ).'" class="px-3 btn btn-danger radius-30 delete-data-table"><i class="mr-1 bx bx-trash-alt"></i>Delete</a>
                     </div>';
                     return $actionBtn;
                 })
@@ -53,7 +54,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('user.create');
+        $atasan = Atasan::get()->pluck('nama', 'id');
+
+        return view('user.create', compact('atasan'));
     }
 
     /**
@@ -74,6 +77,7 @@ class UserController extends Controller
             'tanggal_lahir' => $request->tanggal_lahir,
             'tempat_lahir_tp' => $request->tempat_lahir_tp,
             'opd_tp' => $request->opd_tp,
+            'atasan_id' => $request->atasan_id,
         ]);
 
         return redirect()->route('user.index')->with('store', 'oke');
@@ -92,9 +96,13 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        $data = User::find($id);
+        $data = User::with(['atasannya'])->find($id);
+        $atasan = Atasan::get()->pluck('nama', 'id');
+        $atasannya = Atasan::where('id', $data->atasan_id)
+        ->get()
+        ->pluck('id');
 
-        return view('user.edit', compact('data'));
+        return view('user.edit', compact('data', 'atasan'));
     }
 
     /**
@@ -114,6 +122,7 @@ class UserController extends Controller
             'tanggal_lahir' => $request->tanggal_lahir,
             'tempat_lahir_tp' => $request->tempat_lahir_tp,
             'opd_tp' => $request->opd_tp,
+            'atasan_id' => $request->atasan_id,
         ]);
 
         if($request->password){
