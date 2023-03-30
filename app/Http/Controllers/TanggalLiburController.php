@@ -32,7 +32,7 @@ class TanggalLiburController extends Controller
                 ->addColumn('action', function($row){
                     $actionBtn =
                     '<div>
-                        <a href="'.route('tanggal-libur.destroy', $row->id ).'" class="btn btn-danger px-3 radius-30 delete-data-table"><i class="bx bx-trash-alt mr-1"></i>Delete</a>
+                        <a href="'.route('tanggal-libur.destroy', $row->id ).'" class="px-3 btn btn-danger radius-30 delete-data-table"><i class="mr-1 bx bx-trash-alt"></i>Delete</a>
                     </div>';
                     return $actionBtn;
                 })

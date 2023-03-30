@@ -16,7 +16,7 @@
 @endif
 
 <div class="col-md-12">
-    <label class="form-label">Durasi</label>
+    <label class="form-label">Durasi (*dalam menit)</label>
     <div class="input-group">
         {{Form::number('durasi_menit', null, ['class' => 'form-control', 'placeholder' => 'Menit' ])}}
         {{-- <div class="input-group-prepend">

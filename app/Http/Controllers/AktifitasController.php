@@ -25,10 +25,11 @@ class AktifitasController extends Controller
 
         if($request->ajax()){
             if(auth()->user()->id == 1 || auth()->user()->id == 2){
-                $data = Aktifitas::with(['nama_usernya'])->select('*');
+                $data = Aktifitas::with(['nama_usernya'])->where('keterangan', null)->select('*');
             } else {
                 $data = Aktifitas::with(['nama_usernya'])
                         ->where('user_id', auth()->user()->id)
+                        ->where('keterangan', null)
                         ->select('*');
             }
             
@@ -37,8 +38,8 @@ class AktifitasController extends Controller
                 ->addColumn('action', function($row){
                     $actionBtn =
                     '<div>
-                        <a href="'.route('aktifitas.edit', $row->id ).'" class="btn btn-info px-3 radius-30"><i class="bx bx-edit-alt mr-1"></i>Edit</a>
-                        <a href="'.route('aktifitas.destroy', $row->id ).'" class="btn btn-danger px-3 radius-30 delete-data-table"><i class="bx bx-trash-alt mr-1"></i>Delete</a>
+                        <a href="'.route('aktifitas.edit', $row->id ).'" class="px-3 btn btn-info radius-30"><i class="mr-1 bx bx-edit-alt"></i>Edit</a>
+                        <a href="'.route('aktifitas.destroy', $row->id ).'" class="px-3 btn btn-danger radius-30 delete-data-table"><i class="mr-1 bx bx-trash-alt"></i>Delete</a>
                     </div>';
                     return $actionBtn;
                 })
