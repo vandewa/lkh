@@ -7,6 +7,13 @@ if (!function_exists('get_code_group')) {
     }
 }
 
+if (!function_exists('atasan')) {
+    function atasan($code)
+    {
+        return \App\Models\Atasan::where('id', $code)->pluck('nama', 'id');
+    }
+}
+
 if (! function_exists('is_mobile')) {
     function is_mobile()
     {

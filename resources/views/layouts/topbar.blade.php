@@ -51,7 +51,7 @@
                 <a class="d-flex align-items-center nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <img src="{{ asset('dashtrans/vertical/assets/images/logo.png')}}" class="user-img" alt="user avatar">
                     <div class="user-info ps-3">
-                        <p class="user-name mb-0">{{ auth()->user()->name??'' }}</p>
+                        <p class="mb-0 user-name">{{ auth()->user()->name??'' }}</p>
                     </div>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
@@ -64,7 +64,7 @@
                         </a>
                     </li>
                     <li>
-                        <div class="dropdown-divider mb-0"></div>
+                        <div class="mb-0 dropdown-divider"></div>
                     </li>
                     <li><a class="dropdown-item" href="{{ route('logout') }}"><i class='bx bx-log-out-circle'></i><span>Logout</span></a>
                     </li>
@@ -119,6 +119,10 @@
                 <div class="mb-3">
                     <label class="form-label">Email</label>
                     {{Form::email('email', auth()->user()->email, ['class' => 'form-control' ])}}
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Atasan Langsung</label>
+                    {{Form::select('atasan_id' ,atasan(auth()->user()->atasan_id), null, ['class' => 'form-control ','required', 'disabled' => true])}}
                 </div>
               </div>
               <div class="modal-footer">
