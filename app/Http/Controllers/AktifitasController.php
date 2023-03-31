@@ -234,7 +234,7 @@ class AktifitasController extends Controller
             'opd' => $nama->nama_opd->code_nm??'',
             'jabatan' => $nama->jabatan->code_nm??'',
             'bulan' => strtoupper(Carbon::createFromFormat('Y-m', $bulan_tahun)->isoFormat('MMMM Y')),
-            'tanggal_pengesahan' => strtoupper(Carbon::createFromFormat('Y-m-d', $request->tanggal)->isoFormat('D MMMM Y')),
+            'tanggal_pengesahan' => Carbon::createFromFormat('Y-m-d', $request->tanggal)->isoFormat('D MMMM Y'),
             'nama_atasan' => $nama->atasannya->nama??'',
             'nip' => $nama->atasannya->nip??'',
 

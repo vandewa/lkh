@@ -25,6 +25,7 @@ class CetakLkhValidation extends FormRequest
             'user_id' => 'required',
             'bulan' => 'required',
             'tahun' => 'required',
+            'tanggal' => 'required',
         ];
     }
 }
