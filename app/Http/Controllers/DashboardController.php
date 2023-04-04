@@ -13,7 +13,7 @@ class DashboardController extends Controller
     public function index()
     {
         $total_user = User::whereNotIn('id', [1])->count();
-        $total_aktifitas = Aktifitas::count();
+        $total_aktifitas = Aktifitas::where('keterangan', '!=', null)->count();
         $tambah_aktifitas_hari_ini = Aktifitas::whereDate('created_at', date('Y-m-d'))->count();
         $total_aktifitas_user = Aktifitas::where('user_id', Auth::user()->id??null)->count();
         $tambah_aktifitas_hari_ini_user = Aktifitas::where('user_id', Auth::user()->id??null)->whereDate('created_at', date('Y-m-d'))->count();
