@@ -68,7 +68,7 @@ if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
         columns: [
             { className: 'dt-control', orderable: false, data: null,defaultContent: '', },
             { data: 'DT_RowIndex', name: 'DT_RowIndex' , orderable: false, searchable: false, className: "text-left"},
-            { data: 'tanggalnya', name: 'tanggalnya', defaultContent: '-' },
+            { data: 'tanggalnya', name: 'tanggal', defaultContent: '-' },
             { data: 'nama_usernya.name', name: 'nama_usernya.name', defaultContent: '-' },
             { data: 'nama_kegiatan', name: 'nama_kegiatan', defaultContent: '-' },
             { data: 'durasi_menit', name: 'durasi_menit', defaultContent: '-' },
