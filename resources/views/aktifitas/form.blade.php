@@ -18,7 +18,7 @@
 <div class="col-md-12">
     <label class="form-label">Durasi (*dalam menit)</label>
     <div class="input-group">
-        {{Form::number('durasi_menit', null, ['class' => 'form-control', 'placeholder' => 'Menit' ])}}
+        {{Form::number('durasi_menit', null, ['class' => 'form-control', 'placeholder' => 'Contoh: 30' ])}}
         {{-- <div class="input-group-prepend">
             <span class="input-group-text">
                 <span>Menit</span>
@@ -27,8 +27,8 @@
     </div>
 </div>
 <div class="col-md-12">
-    <label class="form-label">Deskripsi</label>
-    {{Form::textarea('deskripsi', null, ['class' => 'form-control ', 'rows' => 2, 'required' ])}}    
+    <label class="form-label">Deskripsi Aktifitas</label>
+    {{Form::textarea('deskripsi', null, ['class' => 'form-control ', 'rows' => 2, 'placeholder' => 'Contoh: Mengikuti rapat koordinasi pelaksanaan Hari Jadi ke-198 Kabupaten Wonosobo Tahun 2023 di Ruang Mangunkusumo Sekretariat Daerah','required' ])}}    
 </div>
 
 

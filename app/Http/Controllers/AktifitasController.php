@@ -126,7 +126,7 @@ class AktifitasController extends Controller
     public function edit(string $id)
     {
         if(auth()->user()->id == 1 || auth()->user()->id == 2) {
-            $aktifitas = Jabatan::all();
+            $aktifitas = Jabatan::with(['kegiatannya'])->get()->pluck('kegiatannya.nama_kegiatan', 'kegiatannya.id');
         } else {
             $aktifitas = Jabatan::with(['kegiatannya'])
                         ->where('jabatan_tp', auth()->user()->jabatan_tp)
