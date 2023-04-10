@@ -139,6 +139,83 @@ class KegiatanSeeder extends Seeder
             [
                 'id' => '31',
                 'nama_kegiatan' => 'Narasumber pelatihan pencegahan dan pengendalian bencana dan kebakaran'
+            ],
+            
+            [
+                'id' => '32',
+                'nama_kegiatan' => 'Rekapitulasi data'
+            ],
+            [
+                'id' => '33',
+                'nama_kegiatan' => 'Melakukan kerja bakti di lingkungan kantor'
+            ],
+            [
+                'id' => '34',
+                'nama_kegiatan' => 'Mengecek kendaraan'
+            ],
+            [
+                'id' => '35',
+                'nama_kegiatan' => 'Penyusunan KAK, HPS dan spesifikasi pengadaan barang'
+            ],
+            [
+                'id' => '36',
+                'nama_kegiatan' => 'Koordinasi dengan OPD lain'
+            ],
+            [
+                'id' => '37',
+                'nama_kegiatan' => 'Melakukan evakuasi korban kecelakaan/ bencana/ kejadian berbahaya lainya'
+            ],
+            [
+                'id' => '38',
+                'nama_kegiatan' => 'Menerima dan memfasilitasi kunjungan lembaga pendidikan (TK/paud/anak sekolah)'
+            ],
+            [
+                'id' => '39',
+                'nama_kegiatan' => 'Pengecekan proteksi kebakaran (apar/Hydrant)'
+            ],
+            [
+                'id' => '40',
+                'nama_kegiatan' => 'Mengindentifikasi dan menganalisa kebutuhan ase'
+            ],
+            [
+                'id' => '41',
+                'nama_kegiatan' => 'Melaksanakan simulasi bencana'
+            ],
+            [
+                'id' => '42',
+                'nama_kegiatan' => 'Melaksanakan Penanganan keadaan darurat / bencana'
+            ],
+            [
+                'id' => '43',
+                'nama_kegiatan' => 'Menyimpan logistik'
+            ],
+            [
+                'id' => '44',
+                'nama_kegiatan' => 'Mendistribusikan logistik'
+            ],
+            [
+                'id' => '45',
+                'nama_kegiatan' => 'Menyiapkan dokumen rekon aset input persediaan di aplikasi sibapers'
+            ],
+            [
+                'id' => '46',
+                'nama_kegiatan' => 'Membuat surat pernyataan bencana tanda tangan Bupati'
+            ],
+            [
+                'id' => '47',
+                'nama_kegiatan' => 'Menyiapkan dan mempersiapkan kegiatan dan acara'
+            ],
+            [
+                'id' => '48',
+                'nama_kegiatan' => 'Setting jadwal piket'
+            ],
+            [
+                'id' => '49',
+                'nama_kegiatan' => 'Mempersiapkan bahan SPJ'
+            ],
+            [
+                'id' => '50',
+                'nama_kegiatan' => 'Mengeset / Merapikan dokumen '
             ]
         ];
 

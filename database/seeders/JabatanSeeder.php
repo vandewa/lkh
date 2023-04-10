@@ -406,6 +406,202 @@ class JabatanSeeder extends Seeder
                 'kegiatan_id' => '16',
                 'opd_tp' => 'OPD_TP_01'
             ],
+            [
+                'jabatan_tp' => 'JABATAN_TP_03',
+                'kegiatan_id' => '32',
+                'opd_tp' => 'OPD_TP_01'
+            ],
+            [
+                'jabatan_tp' => 'JABATAN_TP_03',
+                'kegiatan_id' => '33',
+                'opd_tp' => 'OPD_TP_01'
+            ],
+            [
+                'jabatan_tp' => 'JABATAN_TP_03',
+                'kegiatan_id' => '34',
+                'opd_tp' => 'OPD_TP_01'
+            ],
+            [
+                'jabatan_tp' => 'JABATAN_TP_03',
+                'kegiatan_id' => '35',
+                'opd_tp' => 'OPD_TP_01'
+            ],
+            [
+                'jabatan_tp' => 'JABATAN_TP_03',
+                'kegiatan_id' => '36',
+                'opd_tp' => 'OPD_TP_01'
+            ],
+            [
+                'jabatan_tp' => 'JABATAN_TP_03',
+                'kegiatan_id' => '37',
+                'opd_tp' => 'OPD_TP_01'
+            ],
+            [
+                'jabatan_tp' => 'JABATAN_TP_03',
+                'kegiatan_id' => '38',
+                'opd_tp' => 'OPD_TP_01'
+            ],
+            [
+                'jabatan_tp' => 'JABATAN_TP_03',
+                'kegiatan_id' => '39',
+                'opd_tp' => 'OPD_TP_01'
+            ],
+            [
+                'jabatan_tp' => 'JABATAN_TP_03',
+                'kegiatan_id' => '40',
+                'opd_tp' => 'OPD_TP_01'
+            ],
+            [
+                'jabatan_tp' => 'JABATAN_TP_03',
+                'kegiatan_id' => '41',
+                'opd_tp' => 'OPD_TP_01'
+            ],
+            [
+                'jabatan_tp' => 'JABATAN_TP_03',
+                'kegiatan_id' => '42',
+                'opd_tp' => 'OPD_TP_01'
+            ],
+            [
+                'jabatan_tp' => 'JABATAN_TP_03',
+                'kegiatan_id' => '43',
+                'opd_tp' => 'OPD_TP_01'
+            ],
+            [
+                'jabatan_tp' => 'JABATAN_TP_03',
+                'kegiatan_id' => '44',
+                'opd_tp' => 'OPD_TP_01'
+            ],
+            [
+                'jabatan_tp' => 'JABATAN_TP_03',
+                'kegiatan_id' => '45',
+                'opd_tp' => 'OPD_TP_01'
+            ],
+            [
+                'jabatan_tp' => 'JABATAN_TP_03',
+                'kegiatan_id' => '46',
+                'opd_tp' => 'OPD_TP_01'
+            ],
+            [
+                'jabatan_tp' => 'JABATAN_TP_03',
+                'kegiatan_id' => '47',
+                'opd_tp' => 'OPD_TP_01'
+            ],
+            [
+                'jabatan_tp' => 'JABATAN_TP_03',
+                'kegiatan_id' => '48',
+                'opd_tp' => 'OPD_TP_01'
+            ],
+            [
+                'jabatan_tp' => 'JABATAN_TP_03',
+                'kegiatan_id' => '49',
+                'opd_tp' => 'OPD_TP_01'
+            ],
+            [
+                'jabatan_tp' => 'JABATAN_TP_03',
+                'kegiatan_id' => '50',
+                'opd_tp' => 'OPD_TP_01'
+            ],
+            [
+                'jabatan_tp' => 'JABATAN_TP_04',
+                'kegiatan_id' => '32',
+                'opd_tp' => 'OPD_TP_01'
+            ],
+            [
+                'jabatan_tp' => 'JABATAN_TP_04',
+                'kegiatan_id' => '33',
+                'opd_tp' => 'OPD_TP_01'
+            ],
+            [
+                'jabatan_tp' => 'JABATAN_TP_04',
+                'kegiatan_id' => '34',
+                'opd_tp' => 'OPD_TP_01'
+            ],
+            [
+                'jabatan_tp' => 'JABATAN_TP_04',
+                'kegiatan_id' => '35',
+                'opd_tp' => 'OPD_TP_01'
+            ],
+            [
+                'jabatan_tp' => 'JABATAN_TP_04',
+                'kegiatan_id' => '36',
+                'opd_tp' => 'OPD_TP_01'
+            ],
+            [
+                'jabatan_tp' => 'JABATAN_TP_04',
+                'kegiatan_id' => '37',
+                'opd_tp' => 'OPD_TP_01'
+            ],
+            [
+                'jabatan_tp' => 'JABATAN_TP_04',
+                'kegiatan_id' => '38',
+                'opd_tp' => 'OPD_TP_01'
+            ],
+            [
+                'jabatan_tp' => 'JABATAN_TP_04',
+                'kegiatan_id' => '39',
+                'opd_tp' => 'OPD_TP_01'
+            ],
+            [
+                'jabatan_tp' => 'JABATAN_TP_04',
+                'kegiatan_id' => '40',
+                'opd_tp' => 'OPD_TP_01'
+            ],
+            [
+                'jabatan_tp' => 'JABATAN_TP_04',
+                'kegiatan_id' => '41',
+                'opd_tp' => 'OPD_TP_01'
+            ],
+            [
+                'jabatan_tp' => 'JABATAN_TP_04',
+                'kegiatan_id' => '42',
+                'opd_tp' => 'OPD_TP_01'
+            ],
+            [
+                'jabatan_tp' => 'JABATAN_TP_04',
+                'kegiatan_id' => '43',
+                'opd_tp' => 'OPD_TP_01'
+            ],
+            [
+                'jabatan_tp' => 'JABATAN_TP_04',
+                'kegiatan_id' => '44',
+                'opd_tp' => 'OPD_TP_01'
+            ],
+            [
+                'jabatan_tp' => 'JABATAN_TP_04',
+                'kegiatan_id' => '45',
+                'opd_tp' => 'OPD_TP_01'
+            ],
+            [
+                'jabatan_tp' => 'JABATAN_TP_04',
+                'kegiatan_id' => '46',
+                'opd_tp' => 'OPD_TP_01'
+            ],
+            [
+                'jabatan_tp' => 'JABATAN_TP_04',
+                'kegiatan_id' => '47',
+                'opd_tp' => 'OPD_TP_01'
+            ],
+            [
+                'jabatan_tp' => 'JABATAN_TP_04',
+                'kegiatan_id' => '48',
+                'opd_tp' => 'OPD_TP_01'
+            ],
+            [
+                'jabatan_tp' => 'JABATAN_TP_04',
+                'kegiatan_id' => '49',
+                'opd_tp' => 'OPD_TP_01'
+            ],
+            [
+                'jabatan_tp' => 'JABATAN_TP_04',
+                'kegiatan_id' => '50',
+                'opd_tp' => 'OPD_TP_01'
+            ],
+            [
+                'jabatan_tp' => 'JABATAN_TP_04',
+                'kegiatan_id' => '33',
+                'opd_tp' => 'OPD_TP_01'
+            ],
+            
         ];
 
         foreach ($data as $datum) {
