@@ -31,5 +31,8 @@
     {{Form::textarea('deskripsi', null, ['class' => 'form-control ', 'rows' => 2, 'placeholder' => 'Contoh: Mengikuti rapat koordinasi pelaksanaan Hari Jadi ke-198 Kabupaten Wonosobo Tahun 2023 di Ruang Mangunkusumo Sekretariat Daerah','required' ])}}    
 </div>
 
-
-@include('submit')
+@if(auth()->user()->id == 1 || auth()->user()->id == 2)
+    @include('submit')
+@else
+    @include('back')
+@endif
