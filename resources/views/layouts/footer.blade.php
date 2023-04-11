@@ -6,6 +6,15 @@
 </div>
 
 {{-- MOBILE ONLY --}}
+@if(Request::segment(1) == 'dashboard')
+<div class="d-block d-md-none">
+    <footer class="fixed-bottom" style="right: 0; bottom:0;">
+        <div class="copyright text-center">
+             <p class="mb-0">Copyright © {{ date('Y') }}. Devan Dewananta - Agung Setiawan</p>
+        </div>
+    </footer>
+</div>
+@else
 <div class="d-block d-md-none">
     <div class="footer-bottom mt-auto">
         <div class="copyright text-center">
@@ -13,3 +22,4 @@
         </div>
     </div>
 </div>
+@endif
