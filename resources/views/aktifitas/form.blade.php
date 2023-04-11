@@ -32,7 +32,7 @@
 </div>
 
 @if(auth()->user()->id == 1 || auth()->user()->id == 2)
-    @include('submit')
+@include('back')
 @else
-    @include('back')
+@include('submit')
 @endif
