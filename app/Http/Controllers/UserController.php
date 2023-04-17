@@ -16,28 +16,30 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        if($request->ajax()){
-            if(auth()->user()->id == 1){
+        if ($request->ajax()) {
+            if (auth()->user()->id == 1) {
                 $data = User::select('*');
             } else {
                 $data = User::whereNotIn('id', [1])->select('*');
             }
-            
+
             return DataTables::of($data)
                 ->addIndexColumn()
-                ->addColumn('action', function($row){
+                ->addColumn('action', function ($row) {
                     $actionBtn =
-                    '<div>
-                        <a href="'.route('user.edit', $row->id ).'" class="px-3 btn btn-info radius-30"><i class="mr-1 bx bx-edit-alt"></i>Edit</a>
-                        <a href="'.route('user.destroy', $row->id ).'" class="px-3 btn btn-danger radius-30 delete-data-table"><i class="mr-1 bx bx-trash-alt"></i>Delete</a>
+                        '<div>
+                        <a href="' . route('user.edit', $row->id) . '" class="px-3 btn btn-info radius-30"><i class="mr-1 bx bx-edit-alt"></i>Edit</a>
+                        <a href="' . route('user.destroy', $row->id) . '" class="px-3 btn btn-danger radius-30 delete-data-table"><i class="mr-1 bx bx-trash-alt"></i>Delete</a>
                     </div>';
                     return $actionBtn;
                 })
-                ->addColumn('tombol',function ($data) {
+                ->addColumn(
+                    'tombol',
+                    function ($data) {
 
-                    $check =  $data->status ? "checked": "";
-                    return '<label class="switch">
-                        <input type="checkbox" '.$check.' onclick="centang('  . $data->id . ')">
+                        $check = $data->status ? "checked" : "";
+                        return '<label class="switch">
+                        <input type="checkbox" ' . $check . ' onclick="centang(' . $data->id . ')">
                         <span class="slider round"></span>
                         </label>';
                     }
@@ -99,8 +101,8 @@ class UserController extends Controller
         $data = User::with(['atasannya'])->find($id);
         $atasan = Atasan::get()->pluck('nama', 'id');
         $atasannya = Atasan::where('id', $data->atasan_id)
-        ->get()
-        ->pluck('id');
+            ->get()
+            ->pluck('id');
 
         return view('user.edit', compact('data', 'atasan'));
     }
@@ -125,12 +127,12 @@ class UserController extends Controller
             'atasan_id' => $request->atasan_id,
         ]);
 
-        if($request->password){
+        if ($request->password) {
             User::find($id)->update([
                 'password' => Hash::make($request->password),
             ]);
         }
-        
+
         return redirect()->route('user.index')->with('edit', 'ok');
     }
 
@@ -166,12 +168,13 @@ class UserController extends Controller
         $comp = User::find($request->id);
         $comp->status = !$comp->status;
         $comp->save();
-    
+
         return response()->json(
             [
                 'success' => true,
                 'message' => 'Data has been successfully changed!'
-            ], 200
+            ],
+            200
         );
     }
 }
