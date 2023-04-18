@@ -37,7 +37,7 @@
                                 <th>Nama</th>
                                 <th>NIP</th>
                                 <th>Jabatan</th>
-                                <th width="15%;">Aksi</th>
+                                <th width="20%;">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
