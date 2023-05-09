@@ -30,11 +30,12 @@
                                 <a class="dropdown-item" href="javascript:;">
                                     <div class="d-flex align-items-center">
                                         <div class="user-online">
-                                            <img src="{{ asset('dashtrans/vertical/assets/images/avatars/avatar-1.png')}}" class="msg-avatar" alt="user avatar">
+                                            <img src="{{ asset('dashtrans/vertical/assets/images/avatars/avatar-1.png') }}"
+                                                class="msg-avatar" alt="user avatar">
                                         </div>
                                         <div class="flex-grow-1">
                                             <h6 class="msg-name">Daisy Anderson <span class="msg-time float-end">5 sec
-                                        ago</span></h6>
+                                                    ago</span></h6>
                                             <p class="msg-info">The standard chunk of lorem</p>
                                         </div>
                                     </div>
@@ -48,26 +49,33 @@
                 </ul>
             </div>
             <div class="user-box dropdown">
-                <a class="d-flex align-items-center nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="{{ asset('dashtrans/vertical/assets/images/logo.png')}}" class="user-img" alt="user avatar">
+                <a class="d-flex align-items-center nav-link dropdown-toggle dropdown-toggle-nocaret" href="#"
+                    role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="{{ asset('dashtrans/vertical/assets/images/logo.png') }}" class="user-img"
+                        alt="user avatar">
                     <div class="user-info ps-3">
-                        <p class="mb-0 user-name">{{ auth()->user()->name??'' }}</p>
+                        <p class="mb-0 user-name">{{ auth()->user()->name ?? '' }}</p>
                     </div>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
                     <li>
-                        <a class="dropdown-item" type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleVerticallycenteredModal1"><i class="bx bx-user"></i><span>Profile</span></a>
+                        <a class="dropdown-item" type="button" class="btn btn-light" data-bs-toggle="modal"
+                            data-bs-target="#exampleVerticallycenteredModal1"><i
+                                class="bx bx-user"></i><span>Profile</span></a>
                     </li>
                     <li>
-                        <a class="dropdown-item" type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleVerticallycenteredModal"><i class="bx bx-cog"></i>
-                           Ganti Password
+                        <a class="dropdown-item" type="button" class="btn btn-light" data-bs-toggle="modal"
+                            data-bs-target="#exampleVerticallycenteredModal"><i class="bx bx-cog"></i>
+                            Ganti Password
                         </a>
                     </li>
                     <li>
                         <div class="mb-0 dropdown-divider"></div>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class='bx bx-log-out-circle'></i><span>Logout</span></a>
+                        <a class="dropdown-item" href="#"
+                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
+                                class='bx bx-log-out-circle'></i><span>Logout</span></a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                             @csrf
                         </form>
@@ -87,22 +95,22 @@
                 <h5 class="modal-title">Ganti Password</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            {{Form::open(['route' => 'ganti.password','method' => 'post', 'class' => 'row g-3 mt-2', 'files' => true, 'id' => 'my-forms'])}}
+            {{ Form::open(['route' => 'ganti.password', 'method' => 'post', 'class' => 'row g-3 mt-2', 'files' => true, 'id' => 'my-forms']) }}
             <div class="modal-body">
                 <div class="mb-3">
                     <label class="form-label">Password Baru</label>
-                    {{Form::password('password', null, ['class' => 'form-control' ])}}
+                    {{ Form::password('password', null, ['class' => 'form-control']) }}
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Konfirmasi Password</label>
-                    {{Form::password('password_confirmation', null, ['class' => 'form-control' ])}}
+                    {{ Form::password('password_confirmation', null, ['class' => 'form-control']) }}
                 </div>
-              </div>
-              <div class="modal-footer">
+            </div>
+            <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-primary">Submit</button>
-              </div>
-            {{Form::close()}}
+            </div>
+            {{ Form::close() }}
         </div>
     </div>
 </div>
@@ -114,30 +122,30 @@
                 <h5 class="modal-title">Edit Profile</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            {{Form::open(['route' => 'edit.profile','method' => 'post', 'class' => 'row g-3 mt-2', 'files' => true, 'id' => 'my-form'])}}
+            {{ Form::open(['route' => 'edit.profile', 'method' => 'post', 'class' => 'row g-3 mt-2', 'files' => true, 'id' => 'my-form']) }}
             <div class="modal-body">
                 <div class="mb-3">
                     <label class="form-label">Nama</label>
-                    {{Form::text('name', auth()->user()->name, ['class' => 'form-control' ])}}
+                    {{ Form::text('name', auth()->user()->name, ['class' => 'form-control']) }}
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Email</label>
-                    {{Form::email('email', auth()->user()->email, ['class' => 'form-control' ])}}
+                    {{ Form::email('email', auth()->user()->email, ['class' => 'form-control']) }}
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Atasan Langsung</label>
-                    {{Form::select('atasan_id' ,atasan(auth()->user()->atasan_id), null, ['class' => 'form-control ','required', 'disabled' => true])}}
+                    {{ Form::select('atasan_id', atasan(auth()->user()->atasan_id), null, ['class' => 'form-control ', 'required', 'disabled' => true]) }}
                 </div>
-              </div>
-              <div class="modal-footer">
+            </div>
+            <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-primary">Submit</button>
-              </div>
-            {{Form::close()}}
+            </div>
+            {{ Form::close() }}
         </div>
     </div>
 </div>
 
 @push('js')
-{{-- {!! JsValidator::formRequest('App\Http\Requests\PasswordValidation','#my-forms') !!} --}}
+    {!! JsValidator::formRequest('App\Http\Requests\PasswordValidation', '#my-forms') !!}
 @endpush
