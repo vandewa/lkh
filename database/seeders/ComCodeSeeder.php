@@ -13,7 +13,7 @@ class ComCodeSeeder extends Seeder
      *
      * @return void
      */
-    public function run() : void
+    public function run(): void
     {
         DB::table('com_codes')->truncate();
         $data = [
@@ -24,6 +24,7 @@ class ComCodeSeeder extends Seeder
             ['code_cd' => 'JABATAN_TP_04', 'code_nm' => 'PUSDALOPS', 'code_group' => 'JABATAN_TP', 'code_value' => ''],
             ['code_cd' => 'JABATAN_TP_05', 'code_nm' => 'AGENDARIS', 'code_group' => 'JABATAN_TP', 'code_value' => ''],
             ['code_cd' => 'OPD_TP_01', 'code_nm' => 'BPBD', 'code_group' => 'OPD_TP', 'code_value' => ''],
+            ['code_cd' => 'OPD_TP_02', 'code_nm' => 'DPUPR', 'code_group' => 'OPD_TP', 'code_value' => ''],
             ['code_cd' => 'TEMPAT_LAHIR_TP_01', 'code_nm' => 'WONOSOBO', 'code_group' => 'TEMPAT_LAHIR_TP', 'code_value' => ''],
             ['code_cd' => 'TEMPAT_LAHIR_TP_02', 'code_nm' => 'TEMANGGUNG', 'code_group' => 'TEMPAT_LAHIR_TP', 'code_value' => ''],
             ['code_cd' => 'TEMPAT_LAHIR_TP_03', 'code_nm' => 'SEMARANG', 'code_group' => 'TEMPAT_LAHIR_TP', 'code_value' => ''],

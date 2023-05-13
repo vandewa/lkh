@@ -25,9 +25,11 @@ class UserStoreValidation extends FormRequest
     {
         return [
             'name' => 'required',
-            'password' => 'confirmed',     
-            'atasan_id' => 'required',
-            'email' => ['required', 'email',
+            'password' => 'confirmed',
+            // 'atasan_id' => 'required',
+            'email' => [
+                'required',
+                'email',
                 Rule::unique('users')->ignore($this->user),
             ],
         ];

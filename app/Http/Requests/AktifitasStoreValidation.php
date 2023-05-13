@@ -26,6 +26,8 @@ class AktifitasStoreValidation extends FormRequest
             'kegiatan_id' => 'required',
             'durasi_menit' => 'required|max:4',
             'deskripsi' => 'required',
+            'waktu_mulai' => 'required',
+            'waktu_selesai' => 'required',
         ];
     }
 }

@@ -25,6 +25,7 @@ class AtasanStoreValidation extends FormRequest
             'nama' => 'required',
             'nip' => 'required|max:18',
             'jabatan' => 'required',
+            'bidang' => 'required',
         ];
     }
 }

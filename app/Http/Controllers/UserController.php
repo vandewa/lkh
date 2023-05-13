@@ -8,6 +8,7 @@ use App\Models\User;
 use Yajra\DataTables\Facades\DataTables;
 use App\Http\Requests\UserStoreValidation;
 use App\Models\Atasan;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -56,7 +57,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        $atasan = Atasan::get()->pluck('nama', 'id');
+        $atasan = Atasan::where('opd_tp', Auth::user()->opd_tp)->get()->pluck('nama', 'id');
 
         return view('user.create', compact('atasan'));
     }
@@ -99,7 +100,7 @@ class UserController extends Controller
     public function edit(string $id)
     {
         $data = User::with(['atasannya'])->find($id);
-        $atasan = Atasan::get()->pluck('nama', 'id');
+        $atasan = Atasan::where('opd_tp', Auth::user()->opd_tp)->get()->pluck('nama', 'id');
         $atasannya = Atasan::where('id', $data->atasan_id)
             ->get()
             ->pluck('id');

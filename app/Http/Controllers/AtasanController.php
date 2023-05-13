@@ -13,15 +13,15 @@ class AtasanController extends Controller
      */
     public function index(Request $request)
     {
-        if($request->ajax()){
+        if ($request->ajax()) {
             $data = Atasan::select('*');
             return DataTables::of($data)
                 ->addIndexColumn()
-                ->addColumn('action', function($row){
+                ->addColumn('action', function ($row) {
                     $actionBtn =
-                    '<div>
-                        <a href="'.route('atasan.edit', $row->id ).'" class="px-3 btn btn-info radius-30"><i class="mr-1 bx bx-edit-alt"></i>Edit</a>
-                        <a href="'.route('atasan.destroy', $row->id ).'" class="px-3 btn btn-danger radius-30 delete-data-table"><i class="mr-1 bx bx-trash-alt"></i>Delete</a>
+                        '<div>
+                        <a href="' . route('atasan.edit', $row->id) . '" class="px-3 btn btn-info radius-30"><i class="mr-1 bx bx-edit-alt"></i>Edit</a>
+                        <a href="' . route('atasan.destroy', $row->id) . '" class="px-3 btn btn-danger radius-30 delete-data-table"><i class="mr-1 bx bx-trash-alt"></i>Delete</a>
                     </div>';
                     return $actionBtn;
                 })
@@ -49,6 +49,8 @@ class AtasanController extends Controller
             'nama' => $request->nama,
             'nip' => $request->nip,
             'jabatan' => $request->jabatan,
+            'bidang' => $request->bidang,
+            'opd_tp' => $request->opd_tp,
         ]);
 
         return redirect()->route('atasan.index')->with('store', 'oke');
@@ -82,6 +84,8 @@ class AtasanController extends Controller
             'nama' => $request->nama,
             'nip' => $request->nip,
             'jabatan' => $request->jabatan,
+            'bidang' => $request->bidang,
+            'opd_tp' => $request->opd_tp,
         ]);
 
         return redirect()->route('atasan.index')->with('edit', 'ok');

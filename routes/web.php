@@ -37,6 +37,7 @@ Route::middleware([
     Route::resource('user', UserController::class);
     Route::get('/aktifitas/cetak', [AktifitasController::class, 'cetakLKH'])->name('cetak.lkh');
     Route::post('/aktifitas/cetak', [AktifitasController::class, 'storeCetakLKH'])->name('store.cetak.lkh');
+    Route::post('/aktifitas/cetak-dpupr', [AktifitasController::class, 'storeCetakLKHDpupr'])->name('store.cetak.lkh.dpupr');
     Route::resource('aktifitas', AktifitasController::class);
     Route::resource('tanggal-libur', TanggalLiburController::class);
     Route::resource('atasan', AtasanController::class);
