@@ -14,7 +14,7 @@ class AtasanController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $data = Atasan::select('*');
+            $data = Atasan::where('opd_tp', auth()->user()->opd_tp)->select('*');
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {

@@ -21,7 +21,9 @@ class UserController extends Controller
             if (auth()->user()->id == 1) {
                 $data = User::select('*');
             } else {
-                $data = User::whereNotIn('id', [1])->select('*');
+                $data = User::whereNotIn('id', [1])
+                    ->where('opd_tp', auth()->user()->opd_tp)
+                    ->select('*');
             }
 
             return DataTables::of($data)

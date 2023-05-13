@@ -35,7 +35,7 @@
                 </a>
             </li>
         @endif
-        @if (auth()->user()->id == 1 || auth()->user()->id == 2)
+        @if (auth()->user()->id == 1 || auth()->user()->id == 2 || auth()->user()->id == 26)
             <li class="{{ Request::segment(1) == 'user' ? 'mm-active' : '' }}">
                 <a href="{{ route('user.index') }}">
                     <div class="parent-icon"><i class='bx bx-user-circle'></i>
