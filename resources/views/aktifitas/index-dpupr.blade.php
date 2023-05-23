@@ -18,14 +18,12 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="mt-4 mb-3 d-flex justify-content-start">
-                        @if (auth()->user()->id != 1 && auth()->user()->id != 2 && auth()->user()->id != 26)
-                            <a href="{{ route('aktifitas.create') }}"><button class="px-5 btn btn-primary radius-30 me-3"><i
-                                        class="bx bx-plus-circle me-1"></i>Add Data</button></a>
-                        @endif
-
-                        @if (auth()->user()->id == 1 || auth()->user()->id == 2 || auth()->user()->id == 26)
-                            <a href="{{ route('cetak.lkh') }}"><button class="px-5 btn btn-success radius-30"><i
-                                        class="bx bx-printer me-1"></i>Cetak LKH</button></a>
+                        @if (auth()->user()->hasRole('admin-dpupr'))
+                        <a href="{{ route('cetak.lkh') }}"><button class="px-5 btn btn-success radius-30"><i
+                            class="bx bx-printer me-1"></i>Cetak LKH</button></a>
+                        @else
+                        <a href="{{ route('aktifitas.create') }}"><button class="px-5 btn btn-primary radius-30 me-3"><i
+                            class="bx bx-plus-circle me-1"></i>Add Data</button></a>
                         @endif
                     </div>
                 </div>

@@ -25,14 +25,29 @@ class AktifitasController extends Controller
     {
 
         if ($request->ajax()) {
-            if (auth()->user()->id == 1 || auth()->user()->id == 2) {
-                $data = Aktifitas::with(['nama_usernya'])->where('keterangan', null)->select('*');
-            } else {
-                $data = Aktifitas::with(['nama_usernya'])
-                    ->where('user_id', auth()->user()->id)
-                    ->where('keterangan', null)
-                    ->select('*');
+            
+            $data = Aktifitas::with(['nama_usernya'])->where('keterangan', null);
+            
+            if (auth()->user()->id == 1) {
+                $data;
+            }  
+            elseif(auth()->user()->id == 2)
+            {
+                $data->whereHas('nama_usernya', function($a){
+                    $a->where('opd_tp', 'OPD_TP_01');
+                });
             }
+            elseif(auth()->user()->hasRole('admin-dpupr'))
+            {
+                $data->whereHas('nama_usernya', function($a){
+                    $a->where('opd_tp', 'OPD_TP_02');
+                });
+            }
+            else {
+                $data->where('user_id', auth()->user()->id);
+            }
+
+            $data = $data->select('*');
 
             return DataTables::of($data)
                 ->addIndexColumn()
@@ -238,7 +253,7 @@ class AktifitasController extends Controller
         })->toArray();
 
         //BPBD
-        if (Auth::user()->opd_tp == 'OPD_TP_01') {
+        if (Auth::user()->opd_tp == 'OPD_TP_01' || Auth::user()->opd_tp == 'OPD_TP_02') {
             $user = User::where('status', 1)
                 ->where('opd_tp', Auth::user()->opd_tp)
                 ->whereNotIn('id', [1, 2])
@@ -246,7 +261,8 @@ class AktifitasController extends Controller
                 ->select(DB::Raw("concat(name,' - ',code_nm,'') as opo, id"))
                 ->orderBy('name', 'asc')
                 ->pluck('opo', 'id');
-        } else {
+        } 
+        else {
             $user = User::where('status', 1)
                 ->where('opd_tp', Auth::user()->opd_tp)
                 ->whereNotIn('id', [1, 2])

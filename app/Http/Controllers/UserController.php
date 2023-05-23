@@ -83,7 +83,8 @@ class UserController extends Controller
             'tempat_lahir_tp' => $request->tempat_lahir_tp,
             'opd_tp' => $request->opd_tp,
             'atasan_id' => $request->atasan_id,
-        ]);
+        ])->assignRole($request->role_user);
+        
 
         return redirect()->route('user.index')->with('store', 'oke');
     }
