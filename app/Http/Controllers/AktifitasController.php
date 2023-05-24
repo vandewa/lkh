@@ -25,25 +25,16 @@ class AktifitasController extends Controller
     {
 
         if ($request->ajax()) {
-            
+
             $data = Aktifitas::with(['nama_usernya'])->where('keterangan', null);
-            
-            if (auth()->user()->id == 1) {
+
+            if (auth()->user()->hasRole('superadmin')) {
                 $data;
-            }  
-            elseif(auth()->user()->id == 2)
-            {
-                $data->whereHas('nama_usernya', function($a){
-                    $a->where('opd_tp', 'OPD_TP_01');
+            } elseif (auth()->user()->hasRole(['admin-dpupr', 'admin-bpbd'])) {
+                $data->whereHas('nama_usernya', function ($a) {
+                    $a->where('opd_tp', auth()->user()->opd_tp);
                 });
-            }
-            elseif(auth()->user()->hasRole('admin-dpupr'))
-            {
-                $data->whereHas('nama_usernya', function($a){
-                    $a->where('opd_tp', 'OPD_TP_02');
-                });
-            }
-            else {
+            } else {
                 $data->where('user_id', auth()->user()->id);
             }
 
@@ -52,12 +43,14 @@ class AktifitasController extends Controller
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
-                    $actionBtn =
-                        '<div>
-                        <a href="' . route('aktifitas.edit', $row->id) . '" class="px-3 btn btn-info radius-30"><i class="mr-1 bx bx-edit-alt"></i>Edit</a>
-                        <a href="' . route('aktifitas.destroy', $row->id) . '" class="px-3 btn btn-danger radius-30 delete-data-table"><i class="mr-1 bx bx-trash-alt"></i>Delete</a>
-                    </div>';
-                    return $actionBtn;
+                    $hapus = '<a href="' . route('aktifitas.destroy', $row->id) . '" class="px-3 btn btn-danger radius-30 delete-data-table"><i class="mr-1 bx bx-trash-alt"></i>Delete</a>';
+
+                    if (auth()->user()->hasRole(['superadmin', 'admin-dpupr', 'admin-bpbd'])) {
+                        $lihat = ' <a href="' . route('aktifitas.edit', $row->id) . '" class="px-3 btn btn-info radius-30"><i class="mr-1 lni lni-eye"></i>Lihat</a>';
+                    } else {
+                        $lihat = ' <a href="' . route('aktifitas.edit', $row->id) . '" class="px-3 btn btn-info radius-30"><i class="mr-1 bx bx-edit-alt"></i>Edit</a>';
+                    }
+                    return '<div>' . $lihat . $hapus . '</div>';
                 })
                 ->addColumn('tanggalnya', function ($row) {
                     return Carbon::createFromFormat('Y-m-d', $row->tanggal)->isoFormat('D MMMM Y');
@@ -87,16 +80,12 @@ class AktifitasController extends Controller
      */
     public function create()
     {
-        if (auth()->user()->id == 1 || auth()->user()->id == 2) {
-            $aktifitas = Jabatan::all();
-        } else {
-            $aktifitas = Jabatan::with(['kegiatannya'])
-                ->where('jabatan_tp', auth()->user()->jabatan_tp)
-                ->where('opd_tp', auth()->user()->opd_tp)
-                ->orderByRaw('(SELECT nama_kegiatan FROM kegiatans WHERE kegiatans.id = jabatans.kegiatan_id)')
-                ->get()
-                ->pluck('kegiatannya.nama_kegiatan', 'kegiatannya.id');
-        }
+        $aktifitas = Jabatan::with(['kegiatannya'])
+            ->where('jabatan_tp', auth()->user()->jabatan_tp)
+            ->where('opd_tp', auth()->user()->opd_tp)
+            ->orderByRaw('(SELECT nama_kegiatan FROM kegiatans WHERE kegiatans.id = jabatans.kegiatan_id)')
+            ->get()
+            ->pluck('kegiatannya.nama_kegiatan', 'kegiatannya.id');
 
         return view('aktifitas.create', compact('aktifitas'));
     }
@@ -164,7 +153,7 @@ class AktifitasController extends Controller
      */
     public function edit(string $id)
     {
-        if (auth()->user()->id == 1 || auth()->user()->id == 2) {
+        if (auth()->user()->hasRole(['superadmin', 'admin-bpbd'])) {
             $aktifitas = Jabatan::with(['kegiatannya'])->get()->pluck('kegiatannya.nama_kegiatan', 'kegiatannya.id');
         } else {
             $aktifitas = Jabatan::with(['kegiatannya'])
@@ -262,8 +251,7 @@ class AktifitasController extends Controller
                 ->select(DB::Raw("concat(name,' - ',code_nm,'') as opo, id"))
                 ->orderBy('name', 'asc')
                 ->pluck('opo', 'id');
-        } 
-        else {
+        } else {
             $user = User::where('status', 1)
                 ->where('opd_tp', Auth::user()->opd_tp)
                 ->whereNotIn('id', [1, 2])
@@ -359,18 +347,13 @@ class AktifitasController extends Controller
         ]);
         $kampret = [];
         foreach ($data as $index => $a1) {
-            if($a1->waktu_mulai == null || $a1->waktu_mulai == null)
-            {
+            if ($a1->waktu_mulai == null || $a1->waktu_mulai == null) {
                 $waktu = '-';
-            }
-            elseif ($a1->waktu_mulai == $a1->waktu_selesai) 
-            {
+            } elseif ($a1->waktu_mulai == $a1->waktu_selesai) {
                 $waktu = Carbon::createFromFormat('H:i:s', $a1->waktu_mulai)->format('H.i') . ' WIB';
-            } 
-            else 
-            {
+            } else {
                 $waktu = Carbon::createFromFormat('H:i:s', $a1->waktu_mulai)->format('H.i') . ' - ' . Carbon::createFromFormat('H:i:s', $a1->waktu_selesai)->format('H.i') . ' WIB ';
-            } 
+            }
 
             array_push($kampret, [
                 'n' => $index + 1,

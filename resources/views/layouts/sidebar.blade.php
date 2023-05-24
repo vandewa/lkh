@@ -26,16 +26,14 @@
                 <div class="menu-title">Aktifitas</div>
             </a>
         </li>
-        {{-- @if (auth()->user()->opd_tp == null || auth()->user()->opd_tp == 'OPD_TP_01') --}}
-            <li class="{{ Request::segment(1) == 'tanggal-libur' ? 'mm-active' : '' }}">
-                <a href="{{ route('tanggal-libur.index') }}">
-                    <div class="parent-icon"><i class='bx bx-calendar-x'></i>
-                    </div>
-                    <div class="menu-title">Tanggal Libur</div>
-                </a>
-            </li>
-        {{-- @endif --}}
-        @if (auth()->user()->id == 1 || auth()->user()->id == 2 || auth()->user()->id == 26 || auth()->user()->hasRole('admin-dpupr'))
+        <li class="{{ Request::segment(1) == 'tanggal-libur' ? 'mm-active' : '' }}">
+            <a href="{{ route('tanggal-libur.index') }}">
+                <div class="parent-icon"><i class='bx bx-calendar-x'></i>
+                </div>
+                <div class="menu-title">Tanggal Libur</div>
+            </a>
+        </li>
+        @if (auth()->user()->hasRole(['admin-dpupr', 'superadmin', 'admin-bpbd']))
             <li class="{{ Request::segment(1) == 'user' ? 'mm-active' : '' }}">
                 <a href="{{ route('user.index') }}">
                     <div class="parent-icon"><i class='bx bx-user-circle'></i>
