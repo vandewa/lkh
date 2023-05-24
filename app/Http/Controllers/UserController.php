@@ -83,8 +83,9 @@ class UserController extends Controller
             'tempat_lahir_tp' => $request->tempat_lahir_tp,
             'opd_tp' => $request->opd_tp,
             'atasan_id' => $request->atasan_id,
+            'tempat_dan_tanggal_lahir' => $request->tempat_dan_tanggal_lahir,
         ])->assignRole($request->role_user);
-        
+
 
         return redirect()->route('user.index')->with('store', 'oke');
     }
@@ -129,6 +130,7 @@ class UserController extends Controller
             'tempat_lahir_tp' => $request->tempat_lahir_tp,
             'opd_tp' => $request->opd_tp,
             'atasan_id' => $request->atasan_id,
+            'tempat_dan_tanggal_lahir' => $request->tempat_dan_tanggal_lahir,
         ]);
 
         if ($request->password) {
