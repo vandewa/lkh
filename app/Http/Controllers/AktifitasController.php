@@ -257,6 +257,7 @@ class AktifitasController extends Controller
             $user = User::where('status', 1)
                 ->where('opd_tp', Auth::user()->opd_tp)
                 ->whereNotIn('id', [1, 2])
+                ->where('email', '!=', 'dpupr@wonosobokab.go.id')
                 ->leftJoin('com_codes', 'users.jabatan_tp', '=', 'com_codes.code_cd')
                 ->select(DB::Raw("concat(name,' - ',code_nm,'') as opo, id"))
                 ->orderBy('name', 'asc')
@@ -358,11 +359,18 @@ class AktifitasController extends Controller
         ]);
         $kampret = [];
         foreach ($data as $index => $a1) {
-            if ($a1->waktu_mulai == $a1->waktu_selesai) {
-                $waktu = Carbon::createFromFormat('H:i:s', $a1->waktu_mulai)->format('H.i') . ' WIB';
-            } else {
-                $waktu = Carbon::createFromFormat('H:i:s', $a1->waktu_mulai)->format('H.i') . ' - ' . Carbon::createFromFormat('H:i:s', $a1->waktu_selesai)->format('H.i') . ' WIB ';
+            if($a1->waktu_mulai == null || $a1->waktu_mulai == null)
+            {
+                $waktu = '-';
             }
+            elseif ($a1->waktu_mulai == $a1->waktu_selesai) 
+            {
+                $waktu = Carbon::createFromFormat('H:i:s', $a1->waktu_mulai)->format('H.i') . ' WIB';
+            } 
+            else 
+            {
+                $waktu = Carbon::createFromFormat('H:i:s', $a1->waktu_mulai)->format('H.i') . ' - ' . Carbon::createFromFormat('H:i:s', $a1->waktu_selesai)->format('H.i') . ' WIB ';
+            } 
 
             array_push($kampret, [
                 'n' => $index + 1,
