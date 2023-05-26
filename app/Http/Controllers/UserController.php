@@ -19,7 +19,7 @@ class UserController extends Controller
     {
         if ($request->ajax()) {
             if (auth()->user()->hasRole('superadmin')) {
-                $data = User::with(['nama_opd'])->select('*');
+                $data = User::with(['nama_opd'])->orderBy('opd_tp', 'asc')->select('*');
             } else {
                 $data = User::with(['nama_opd'])->whereNotIn('id', [1])
                     ->where('opd_tp', auth()->user()->opd_tp)
