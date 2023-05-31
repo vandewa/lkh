@@ -29,7 +29,8 @@ class DashboardController extends Controller
         })
         ->count();
 
-        $aktifitas_dpupr = Aktifitas::whereHas('nama_usernya', function ($a){
+        $aktifitas_dpupr = Aktifitas::where('keterangan', null)
+        ->whereHas('nama_usernya', function ($a){
             $a->where('opd_tp', 'OPD_TP_02');
         })
         ->count();
@@ -41,7 +42,8 @@ class DashboardController extends Controller
         })
         ->count();
 
-        $tambah_aktifitas_hari_ini_dpupr = Aktifitas::whereDate('created_at', date('Y-m-d'))
+        $tambah_aktifitas_hari_ini_dpupr = Aktifitas::where('keterangan', null)
+        ->whereDate('created_at', date('Y-m-d'))
         ->whereHas('nama_usernya', function ($a){
             $a->where('opd_tp', 'OPD_TP_02');
         })
@@ -55,6 +57,7 @@ class DashboardController extends Controller
         ->count();
 
         $total_aktifitas_user_dpupr = Aktifitas::where('user_id', Auth::user()->id??null)
+        ->where('keterangan', null)
         ->whereHas('nama_usernya', function ($a){
             $a->where('opd_tp', 'OPD_TP_02');
         })
@@ -70,6 +73,7 @@ class DashboardController extends Controller
 
         $tambah_aktifitas_hari_ini_user_dpupr = Aktifitas::where('user_id', Auth::user()->id??null)
         ->whereDate('created_at', date('Y-m-d'))
+        ->where('keterangan', null)
         ->whereHas('nama_usernya', function ($a){
             $a->where('opd_tp', 'OPD_TP_02');
         })
