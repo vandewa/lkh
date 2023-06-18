@@ -368,8 +368,8 @@ class AktifitasController extends Controller
         $templateProcessor->cloneRowAndSetValues('n', $kampret);
         $templateProcessor->saveAs($pathSave);
 
-        ConvertToPDF::dispatch($nama_file_pdf, $nama_file_pdf, $pathSave);
-        // return response()->download($pathSave)->deleteFileAfterSend(true);
+        // ConvertToPDF::dispatch($nama_file_pdf, $nama_file_pdf, $pathSave);
+        return response()->download($pathSave)->deleteFileAfterSend(true);
 
     }
 }
