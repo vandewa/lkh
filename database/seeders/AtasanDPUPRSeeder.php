@@ -15,7 +15,7 @@ class AtasanDPUPRSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('atasans')->truncate();
+        // DB::table('atasans')->truncate();
 
         $data = [
             ['id' => '6', 'nama' => 'BAMBANG SUPRIYANTO, SH', 'nip' => '197105031995031002', 'jabatan' => 'Kepala Sub Bagian Umum dan Kepegawaian DPUPR ', 'opd_tp' => 'OPD_TP_02', 'bidang' => 'SEKRETARIAT'],

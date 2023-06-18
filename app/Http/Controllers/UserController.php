@@ -18,10 +18,10 @@ class UserController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            if (auth()->user()->id == 1) {
-                $data = User::select('*');
+            if (auth()->user()->hasRole('superadmin')) {
+                $data = User::with(['nama_opd'])->orderBy('opd_tp', 'asc')->select('*');
             } else {
-                $data = User::whereNotIn('id', [1])
+                $data = User::with(['nama_opd'])->whereNotIn('id', [1])
                     ->where('opd_tp', auth()->user()->opd_tp)
                     ->select('*');
             }
