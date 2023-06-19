@@ -36,8 +36,10 @@ Route::middleware([
     Route::post('sendStatus', [UserController::class, 'changeAccess']);
     Route::resource('user', UserController::class);
     Route::get('/aktifitas/cetak', [AktifitasController::class, 'cetakLKH'])->name('cetak.lkh');
+    Route::get('/aktifitas/cetak-pdf', [AktifitasController::class, 'cetakLKHPDF'])->name('cetak.lkh.pdf');
     Route::post('/aktifitas/cetak', [AktifitasController::class, 'storeCetakLKH'])->name('store.cetak.lkh');
     Route::post('/aktifitas/cetak-dpupr', [AktifitasController::class, 'storeCetakLKHDpupr'])->name('store.cetak.lkh.dpupr');
+    Route::post('/aktifitas/cetak-dpupr-pdf', [AktifitasController::class, 'storeCetakLKHDpuprPDF'])->name('store.cetak.lkh.dpupr.pdf');
     Route::resource('aktifitas', AktifitasController::class);
     Route::resource('tanggal-libur', TanggalLiburController::class);
     Route::resource('atasan', AtasanController::class);
