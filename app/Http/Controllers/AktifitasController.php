@@ -96,6 +96,24 @@ class AktifitasController extends Controller
      */
     public function store(Request $request)
     {
+        if(auth()->user()->opd_tp == 'OPD_TP_01'){
+            $request->validate([
+                'tanggal' => 'required',
+                'kegiatan_id' => 'required',
+                'durasi_menit' => 'required|max:4',
+                'deskripsi' => 'required',
+            ]);
+        }
+        
+        if(auth()->user()->opd_tp == 'OPD_TP_02'){
+            $request->validate([
+                'tanggal' => 'required',
+                'deskripsi' => 'required',
+                'waktu_mulai' => 'required',
+                'waktu_selesai' => 'required',
+            ]);
+        }
+
         //BPBD cek ketika da yang dupikat
         if (User::where('id', $request->user_id)->first()->opd_tp == 'OPD_TP_01') {
             $cek = Aktifitas::where('tanggal', $request->tanggal)->where('user_id', $request->user_id)->first();
