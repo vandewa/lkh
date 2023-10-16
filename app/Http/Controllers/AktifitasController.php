@@ -30,13 +30,13 @@ class AktifitasController extends Controller
             $data = Aktifitas::with(['nama_usernya'])->where('keterangan', null);
 
             if (auth()->user()->hasRole('superadmin')) {
-                $data;
+                $data->limit(1000);
             } elseif (auth()->user()->hasRole(['admin-dpupr', 'admin-bpbd'])) {
                 $data->whereHas('nama_usernya', function ($a) {
                     $a->where('opd_tp', auth()->user()->opd_tp);
-                });
+                })->limit(1000);
             } else {
-                $data->where('user_id', auth()->user()->id);
+                $data->where('user_id', auth()->user()->id)->limit(1000);
             }
 
             $data = $data->select('*');
