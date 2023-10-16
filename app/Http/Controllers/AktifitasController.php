@@ -33,7 +33,7 @@ class AktifitasController extends Controller
                 $today = new \DateTime();
 
                 // Mengurangkan 3 bulan
-                $today->sub(new \DateInterval('P3M'));
+                $today->sub(new \DateInterval('P6M'));
 
                 // Format tanggal dalam bentuk yang diinginkan
                 $newDate = $today->format('Y-m-d');
