@@ -39,7 +39,7 @@ class AktifitasController extends Controller
                 $data->where('user_id', auth()->user()->id);
             }
 
-            $data = $data->limit(10000);
+            $data = $data->select('*');
 
             return DataTables::of($data)
                 ->addIndexColumn()

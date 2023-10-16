@@ -26,8 +26,8 @@
     <link rel="stylesheet"
         href="{{ asset('dashtrans/vertical/assets/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.min.css') }}">
     <!-- loader-->
-    <link href="{{ asset('dashtrans/vertical/assets/css/pace.min.css') }}" rel="stylesheet" />
-    <script src="{{ asset('dashtrans/vertical/assets/js/pace.min.js') }}"></script>
+    {{-- <link href="{{ asset('dashtrans/vertical/assets/css/pace.min.css') }}" rel="stylesheet" />
+    <script src="{{ asset('dashtrans/vertical/assets/js/pace.min.js') }}"></script> --}}
     <!-- Bootstrap CSS -->
     <link href="{{ asset('dashtrans/vertical/assets/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('dashtrans/vertical/assets/css/bootstrap-extended.css') }}" rel="stylesheet">
