@@ -25,7 +25,18 @@ class AktifitasController extends Controller
     public function index(Request $request)
     {
 
+
+
         if ($request->ajax()) {
+
+                // Mendapatkan tanggal hari ini
+                $today = new \DateTime();
+
+                // Mengurangkan 3 bulan
+                $today->sub(new \DateInterval('P3M'));
+
+                // Format tanggal dalam bentuk yang diinginkan
+                $newDate = $today->format('Y-m-d');
 
             $data = Aktifitas::with(['nama_usernya'])->where('keterangan', null);
 
@@ -39,7 +50,7 @@ class AktifitasController extends Controller
                 $data->where('user_id', auth()->user()->id);
             }
 
-            $data = $data->select('*');
+            $data = $data->where('created_at', '>', $newDate)->select('*');
 
             return DataTables::of($data)
                 ->addIndexColumn()
