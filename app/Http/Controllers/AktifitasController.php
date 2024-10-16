@@ -518,7 +518,7 @@ class AktifitasController extends Controller
         $templateProcessor->saveAs($pathSave);
 
         ConvertToPDF::dispatch($nama_file_docx, $nama_file_pdf, $pathSave);
-        return response()->download(storage_path('app/pdf/LKH-' . $nama->name . '-' . konversiTanggal($bulan) . '-' . $request->tahun . '.pdf'))->deleteFileAfterSend(true);
+        return response()->download(public_path('lkh/' . $nama->name . '-' . konversiTanggal($bulan) . '-' . $request->tahun . '.pdf'))->deleteFileAfterSend(true);
 
 
     }
