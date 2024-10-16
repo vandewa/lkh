@@ -36,28 +36,30 @@ class ConvertToPDF implements ShouldQueue
      */
     public function handle()
     {
-        $pathPDF = storage_path('app/pdf/');
-        if (!file_exists($pathPDF)) {
-            mkdir($pathPDF);
-        }
+        // $pathPDF = storage_path('app/pdf/');
+        // if (!file_exists($pathPDF)) {
+        //     mkdir($pathPDF);
+        // }
+
+        $pathPDF = public_path('lkh');
 
         $client = new Client();
-        $resource = fopen($pathPDF.$this->nama_file_pdf,'w');
+        $resource = fopen($pathPDF . $this->nama_file_pdf, 'w');
 
         $client->request('POST', 'http://103.155.105.35:3000/convert', [
             'multipart' => [
                 [
-                    'name'     => 'format',
+                    'name' => 'format',
                     'contents' => 'pdf',
                 ],
                 [
-                    'name'     => 'file',
+                    'name' => 'file',
                     'contents' => File::get($this->pathSave),
                     'filename' => $this->nama_file_docx,
                 ]
-               
-                ],
-                'sink' =>  $resource
+
+            ],
+            'sink' => $resource
         ]);
 
     }
