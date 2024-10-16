@@ -287,7 +287,9 @@ class AktifitasController extends Controller
         $bulan_tahun = ($request->tahun . '-' . $request->bulan);
 
         $path = public_path('template/form_lkh.docx');
-        $pathSave = storage_path('app/public/' . 'LKH-' . $nama->name . '-' . konversiTanggal($bulan) . '-' . $request->tahun . '.docx');
+        // $pathSave = storage_path('app/public/' . 'LKH-' . $nama->name . '-' . konversiTanggal($bulan) . '-' . $request->tahun . '.docx');
+        $pathSave = public_path('LKH-' . $nama->name . '-' . konversiTanggal($bulan) . '-' . $request->tahun . '.docx');
+
         $templateProcessor = new TemplateProcessor($path);
         $templateProcessor->setValues([
             'nama' => $nama->name ?? '',
