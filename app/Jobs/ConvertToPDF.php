@@ -42,12 +42,14 @@ class ConvertToPDF implements ShouldQueue
         //     mkdir($pathPDF);
         // }
 
+        $path = public_path('lkh/' . $this->nama_file_docx);
+
         // $pathPDF = public_path('lkh/');
 
-        // $client = new Client();
+        $client = new Client();
         // $resource = fopen($pathPDF . $this->nama_file_pdf, 'w');
 
-        // $client->request('POST', 'http://103.155.105.35:3000/convert', [
+        // $client->request('POST', 'http://10.90.237.12:8080/api/v1/convert/file/pdf', [
         //     'multipart' => [
         //         [
         //             'name' => 'format',
@@ -63,23 +65,33 @@ class ConvertToPDF implements ShouldQueue
         //     'sink' => $resource
         // ]);
 
-        $pathWORD = public_path('lkh/' . $this->nama_file_docx);
-
-        $client = new Client();
-
         $response = $client->request('POST', 'http://10.90.237.12:8080/api/v1/convert/file/pdf', [
             'multipart' => [
                 [
                     'name' => 'fileInput',
-                    'contents' => fopen($pathWORD, 'r'),
+                    'contents' => fopen($path, 'r'),
                 ]
 
             ]
         ]);
 
-        File::put(public_path('lkh/' . $this->nama_file_pdf), $response->getBody());
+        // $pathWORD = public_path('lkh/' . $this->nama_file_docx);
 
-        // Storage::disk('local')->put('mpp/path_pdf/' . $this->nama_file_pdf, $response->getBody());
+        // $client = new Client();
+
+        // $response = $client->request('POST', 'http://10.90.237.12:8080/api/v1/convert/file/pdf', [
+        //     'multipart' => [
+        //         [
+        //             'name' => 'fileInput',
+        //             'contents' => fopen($pathWORD, 'r'),
+        //         ]
+
+        //     ]
+        // ]);
+
+        // File::put(public_path('lkh/' . $this->nama_file_pdf), $response->getBody());
+
+        // // Storage::disk('local')->put('mpp/path_pdf/' . $this->nama_file_pdf, $response->getBody());
 
 
 
