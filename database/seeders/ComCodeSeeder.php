@@ -72,6 +72,7 @@ class ComCodeSeeder extends Seeder
             ['code_cd' => 'JABATAN_DPUPR_TP_47', 'code_nm' => 'TFL Pemberdayaan', 'code_group' => 'JABATAN_DPUPR_TP', 'code_value' => ''],
             ['code_cd' => 'JABATAN_DPUPR_TP_48', 'code_nm' => 'TFL Teknik', 'code_group' => 'JABATAN_DPUPR_TP', 'code_value' => ''],
             ['code_cd' => 'JABATAN_DPUPR_TP_49', 'code_nm' => 'Tenaga Mandor UPTD Pemeliharaan Jalan dan Irigasi Wilayah II', 'code_group' => 'JABATAN_DPUPR_TP', 'code_value' => ''],
+            ['code_cd' => 'JABATAN_DPUPR_TP_50', 'code_nm' => 'Os Kebersihan Kantor DPUPR', 'code_group' => 'JABATAN_DPUPR_TP', 'code_value' => ''],
             ['code_cd' => 'OPD_TP_01', 'code_nm' => 'BPBD', 'code_group' => 'OPD_TP', 'code_value' => ''],
             ['code_cd' => 'OPD_TP_02', 'code_nm' => 'DPUPR', 'code_group' => 'OPD_TP', 'code_value' => ''],
             ['code_cd' => 'TEMPAT_LAHIR_TP_01', 'code_nm' => 'WONOSOBO', 'code_group' => 'TEMPAT_LAHIR_TP', 'code_value' => ''],

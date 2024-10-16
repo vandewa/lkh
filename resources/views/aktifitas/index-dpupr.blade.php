@@ -19,8 +19,10 @@
                 <div class="col-md-12">
                     <div class="mt-4 mb-3 d-flex justify-content-start">
                         @if (auth()->user()->hasRole('admin-dpupr'))
-                            <a href="{{ route('cetak.lkh') }}"><button class="px-5 btn btn-success radius-30"><i
-                                        class="bx bx-printer me-1"></i>Cetak LKH</button></a>
+                            <a href="{{ route('cetak.lkh') }}"><button class="px-5 btn btn-success radius-30 me-3"><i
+                                        class="bx bx-printer me-1"></i>Cetak (word)</button></a>
+                            <a href="{{ route('cetak.lkh.pdf') }}"><button class="px-5 btn btn-info radius-30"><i
+                                        class="bx bx-printer me-1"></i>Cetak (pdf)</button></a>
                         @else
                             <a href="{{ route('aktifitas.create') }}"><button class="px-5 btn btn-primary radius-30 me-3"><i
                                         class="bx bx-plus-circle me-1"></i>Add Data</button></a>

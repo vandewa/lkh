@@ -28,5 +28,8 @@ class AppServiceProvider extends ServiceProvider
         $tema = $tema->code_nm;
         View::share('tema', $tema);
 
+        if (env('APP_ENV') != 'local') {
+            $this->app['request']->server->set('HTTPS', true);
+        }
     }
 }
