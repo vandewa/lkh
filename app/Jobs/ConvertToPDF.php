@@ -41,7 +41,7 @@ class ConvertToPDF implements ShouldQueue
         //     mkdir($pathPDF);
         // }
 
-        $pathPDF = public_path('lkh');
+        $pathPDF = public_path('lkh/');
 
         $client = new Client();
         $resource = fopen($pathPDF . $this->nama_file_pdf, 'w');
