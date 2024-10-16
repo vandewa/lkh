@@ -29,14 +29,14 @@ class AktifitasController extends Controller
 
         if ($request->ajax()) {
 
-                // Mendapatkan tanggal hari ini
-                $today = new \DateTime();
+            // Mendapatkan tanggal hari ini
+            $today = new \DateTime();
 
-                // Mengurangkan 3 bulan
-                $today->sub(new \DateInterval('P6M'));
+            // Mengurangkan 3 bulan
+            $today->sub(new \DateInterval('P6M'));
 
-                // Format tanggal dalam bentuk yang diinginkan
-                $newDate = $today->format('Y-m-d');
+            // Format tanggal dalam bentuk yang diinginkan
+            $newDate = $today->format('Y-m-d');
 
             $data = Aktifitas::with(['nama_usernya'])->where('keterangan', null);
 
@@ -107,7 +107,7 @@ class AktifitasController extends Controller
      */
     public function store(Request $request)
     {
-        if(auth()->user()->opd_tp == 'OPD_TP_01'){
+        if (auth()->user()->opd_tp == 'OPD_TP_01') {
             $request->validate([
                 'tanggal' => 'required',
                 'kegiatan_id' => 'required',
@@ -115,8 +115,8 @@ class AktifitasController extends Controller
                 'deskripsi' => 'required',
             ]);
         }
-        
-        if(auth()->user()->opd_tp == 'OPD_TP_02'){
+
+        if (auth()->user()->opd_tp == 'OPD_TP_02') {
             $request->validate([
                 'tanggal' => 'required',
                 'deskripsi' => 'required',
@@ -364,7 +364,7 @@ class AktifitasController extends Controller
 
         $path = public_path('template/form_lkh.docx');
         // $pathSave = storage_path('app/public/' . 'LKH-' . $nama->name . '-' . konversiTanggal($bulan) . '-' . $request->tahun . '.docx');
-        $pathSave = public_path('LKH-' . $nama->name . '-' . konversiTanggal($bulan) . '-' . $request->tahun . '.docx');
+        $pathSave = public_path('lkh/' . 'LKH-' . $nama->name . '-' . konversiTanggal($bulan) . '-' . $request->tahun . '.docx');
 
         $templateProcessor = new TemplateProcessor($path);
         $templateProcessor->setValues([
@@ -414,16 +414,16 @@ class AktifitasController extends Controller
         $bulan = $request->bulan;
 
         $path = public_path('template/form_lkh_dpupr.docx');
-        
+
         //output nama file docx yang sudah digenerate
         $nama_file_docx = 'LKH-' . $nama->name . '-' . konversiTanggal($bulan) . '-' . $request->tahun . '.docx';
 
         //lokasi serta nama filenya
-        $pathSave = storage_path('app/public/'.$nama_file_docx);
- 
+        $pathSave = storage_path('app/public/' . $nama_file_docx);
+
         //nama file PDF yang sudah digenerate
         $nama_file_pdf = 'LKH-' . $nama->name . '-' . konversiTanggal($bulan) . '-' . $request->tahun . '.pdf';
-         
+
         $templateProcessor = new TemplateProcessor($path);
         $templateProcessor->setValues([
             'nama' => $nama->name ?? '',
@@ -474,16 +474,16 @@ class AktifitasController extends Controller
         $bulan = $request->bulan;
 
         $path = public_path('template/form_lkh_dpupr.docx');
-        
+
         //output nama file docx yang sudah digenerate
         $nama_file_docx = 'LKH-' . $nama->name . '-' . konversiTanggal($bulan) . '-' . $request->tahun . '.docx';
 
         //lokasi serta nama filenya
-        $pathSave = storage_path('app/public/'.$nama_file_docx);
- 
+        $pathSave = storage_path('app/public/' . $nama_file_docx);
+
         //nama file PDF yang sudah digenerate
         $nama_file_pdf = 'LKH-' . $nama->name . '-' . konversiTanggal($bulan) . '-' . $request->tahun . '.pdf';
-         
+
         $templateProcessor = new TemplateProcessor($path);
         $templateProcessor->setValues([
             'nama' => $nama->name ?? '',
@@ -517,7 +517,7 @@ class AktifitasController extends Controller
 
         ConvertToPDF::dispatch($nama_file_docx, $nama_file_pdf, $pathSave);
         return response()->download(storage_path('app/pdf/LKH-' . $nama->name . '-' . konversiTanggal($bulan) . '-' . $request->tahun . '.pdf'))->deleteFileAfterSend(true);
-        
+
 
     }
 }
