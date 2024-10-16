@@ -419,7 +419,8 @@ class AktifitasController extends Controller
         $nama_file_docx = 'LKH-' . $nama->name . '-' . konversiTanggal($bulan) . '-' . $request->tahun . '.docx';
 
         //lokasi serta nama filenya
-        $pathSave = storage_path('app/public/' . $nama_file_docx);
+        // $pathSave = storage_path('app/public/' . $nama_file_docx);
+        $pathSave = public_path('lkh/' . $nama_file_docx);
 
         //nama file PDF yang sudah digenerate
         $nama_file_pdf = 'LKH-' . $nama->name . '-' . konversiTanggal($bulan) . '-' . $request->tahun . '.pdf';
